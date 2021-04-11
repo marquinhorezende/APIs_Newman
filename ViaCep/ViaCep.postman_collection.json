@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "d30189a8-c537-4638-a290-acf3961c2731",
+		"name": "ViaCep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consult CEP 13332-165 - INDAIATUBA-SP",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var responseExpected = ",
+							"{",
+							"    \"cep\": \"13332-165\",",
+							"    \"logradouro\": \"Rua Ravena\",",
+							"    \"complemento\": \"\",",
+							"    \"bairro\": \"Jardim Bréscia\",",
+							"    \"localidade\": \"Indaiatuba\",",
+							"    \"uf\": \"SP\",",
+							"    \"ibge\": \"3520509\",",
+							"    \"gia\": \"3530\",",
+							"    \"ddd\": \"19\",",
+							"    \"siafi\": \"6511\"",
+							"}",
+							"",
+							"",
+							"pm.globals.set(\"expected\", responseExpected);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate HTTP status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"pm.test(\"Validate response not null\", function () {",
+							"    pm.response.to.be.not.eql(null);",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"var jsonResponse = JSON.parse(responseBody);",
+							"pm.test(\"Validate 'nickname' field\", function () {",
+							"    pm.expect(jsonResponse.bairro).to.eql(\"Jardim Bréscia\");",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"var jsonResponse = JSON.parse(responseBody);",
+							"// console.log(jsonResponse);",
+							"// console.log(pm.globals.get(\"expected\"));",
+							"pm.test(\"Validate all response\", function () {",
+							"    pm.expect(pm.globals.get(\"expected\")).to.eql(jsonResponse);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ws/13332165/json/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ws",
+						"13332165",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consult CEP 13086-902 - CAMPINAS-SP",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var responseExpected = ",
+							"{",
+							"    \"cep\": \"13086-902\",",
+							"    \"logradouro\": \"Rua Doutor Ricardo Benetton Martins\",",
+							"    \"complemento\": \"s/n\",",
+							"    \"bairro\": \"Polo II de Alta Tecnologia (Campinas)\",",
+							"    \"localidade\": \"Campinas\",",
+							"    \"uf\": \"SP\",",
+							"    \"ibge\": \"3509502\",",
+							"    \"gia\": \"2446\",",
+							"    \"ddd\": \"19\",",
+							"    \"siafi\": \"6291\"",
+							"}",
+							"",
+							"",
+							"pm.globals.set(\"expected\", responseExpected);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate HTTP status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"pm.test(\"Validate response not null\", function () {",
+							"    pm.response.to.be.not.eql(null);",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"var jsonResponse = JSON.parse(responseBody);",
+							"pm.test(\"Validate 'nickname' field\", function () {",
+							"    pm.expect(jsonResponse.bairro).to.eql(\"Polo II de Alta Tecnologia (Campinas)\");",
+							"});",
+							"",
+							"////////////////////////////////////////////////////////////////////////////////",
+							"",
+							"var jsonResponse = JSON.parse(responseBody);",
+							"// console.log(jsonResponse);",
+							"// console.log(pm.globals.get(\"expected\"));",
+							"pm.test(\"Validate all response\", function () {",
+							"    pm.expect(pm.globals.get(\"expected\")).to.eql(jsonResponse);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ws/13086902/json/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ws",
+						"13086902",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
